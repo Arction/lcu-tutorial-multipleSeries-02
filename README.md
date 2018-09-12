@@ -4,7 +4,7 @@ Best practice of data visualization within Data Analysis in different fields and
 
 ![](./assets/Tutorial_2_Chart_Reuslt.png)
 
-1. Create line-series, owner, and axes assignment.
+##### 1. Create line-series, owner, and axes assignment.
 
    ```cpp
    // New line-series instance is assigned to default X and Y axes.
@@ -15,7 +15,7 @@ Best practice of data visualization within Data Analysis in different fields and
    );
    ```
 
-2. Prepare data.
+##### 2. Prepare data.
 
    ```csharp
    // Recreate data collection with new algorithm.
@@ -27,7 +27,7 @@ Best practice of data visualization within Data Analysis in different fields and
    }
    ```
 
-3. Configure and set options.
+##### 3. Configure and set options.
 
    ```csharp
    // Configure line style (e.g. Color, Line thickness and Pattern).
@@ -37,7 +37,7 @@ Best practice of data visualization within Data Analysis in different fields and
    series2.Points = data; // Assign data.
    ```
 
-4. Make created line-series a part of a chart.
+##### 4. Make created line-series a part of a chart.
 
    ```csharp
    // Add the series into list of point-line-series 
