@@ -1,5 +1,5 @@
 ﻿// ------------------------------------------------------------------------------------------------------
-// LightningChart® example code: Chart with Multiple Series.
+// LightningChart® example code: Chart with Multiple Series Demo.
 //
 // If you need any assistance, or notice error in this example code, please contact support@arction.com. 
 //
@@ -7,15 +7,15 @@
 //
 // http://arction.com/ | support@arction.com | sales@arction.com
 //
-// © Arction Ltd 2009-2017. All rights reserved.  
+// © Arction Ltd 2009-2019. All rights reserved.  
 // ------------------------------------------------------------------------------------------------------
 using System;
 using System.Drawing;
 using System.Windows.Forms;
 
-// Arction namespaces
-using Arction.WinForms.Charting;                // LightningChartUltimate and general types 
-using Arction.WinForms.Charting.SeriesXY;       // Series for 2D chart 
+// Arction namespaces.
+using Arction.WinForms.Charting;                // LightningChartUltimate and general types.
+using Arction.WinForms.Charting.SeriesXY;       // Series for 2D chart.
 
 namespace MultipleSeries_WF
 {
@@ -25,39 +25,48 @@ namespace MultipleSeries_WF
         {
             InitializeComponent();
 
-            // Create chart instance and store it member variable.
+            // Create chart.
             var chart = new LightningChartUltimate();
 
-            // Set chart control into the parent container.
-            chart.Parent = this;         //Set form as parent 
-            chart.Dock = DockStyle.Fill; //Maximize to parent client area
+            // Disable rendering before updating chart properties to improve performance
+            // and to prevent unnecessary chart redrawing while changing multiple properties.
+            chart.BeginUpdate();
 
-            // Prepare data for line-series.
+            // Set chart control into the parent container.
+            chart.Parent = this;         // Set form as parent. 
+            chart.Dock = DockStyle.Fill; // Maximize to parent client area.
+
+            // Generate data for first series.
             var rand = new Random();
             int pointCounter = 70;
 
             var data = new SeriesPoint[pointCounter];
-            for (int i = 0; i < pointCounter; i++) {
+            for (int i = 0; i < pointCounter; i++)
+            {
                 data[i].X = (double)i;
                 data[i].Y = rand.Next(0, 100);
             }
 
-            // Add PointLineSeries for variable-interval data, progressing by X.
-            var series = new PointLineSeries(chart.ViewXY, chart.ViewXY.XAxes[0], chart.ViewXY.YAxes[0]);
+            // Define variables for X- and Y-axis.
+            var axisX = chart.ViewXY.XAxes[0];
+            var axisY = chart.ViewXY.YAxes[0];
+
+            // Create a new PointLineSeries and add it to the list of PointLineSeries.
+            var series = new PointLineSeries(chart.ViewXY, axisX, axisY);
             series.LineStyle.Color = Color.Orange;
             series.Title.Text = "Random data";
             series.Points = data;
             chart.ViewXY.PointLineSeries.Add(series);
 
-            // 1. Prepare new data for new line-series with differen algorithm.
+            // 1. Generate new data for second series.
             data = new SeriesPoint[pointCounter];
-            for (int i = 0; i < pointCounter; i++) {
+            for (int i = 0; i < pointCounter; i++)
+            {
                 data[i].X = (double)i;
                 data[i].Y = Math.Sin(i * 0.2) * 50 + 50;
             }
 
-            // 2. Add one more PointLineSeries for sinusoidal data.
-            // Configure by setting another color and pattern for the line.
+            // 2. Create another PointLineSeries and set new color and line-pattern for it.
             var series2 = new PointLineSeries(chart.ViewXY, chart.ViewXY.XAxes[0], chart.ViewXY.YAxes[0]);
             series2.LineStyle.Color = Color.FromArgb(255, 255, 67, 0);
             series2.LineStyle.Pattern = LinePattern.DashDot;
@@ -66,20 +75,24 @@ namespace MultipleSeries_WF
             // 3. Set data-points into series.
             series2.Points = data;
 
-            // 4. Add the series into list of point-line-series.
+            // 4. Add series to chart.
             chart.ViewXY.PointLineSeries.Add(series2);
 
-            // Auto-scale X and Y axes.
+            // Auto-scale X- and Y-axes.
             chart.ViewXY.ZoomToFit();
 
-            #region Hiden polishing
+            #region Hidden polishing
 
-            CusomizeChart(chart);
+            CustomizeChart(chart);
 
             #endregion
+
+            // Call EndUpdate to enable rendering again.
+            chart.EndUpdate();
         }
 
-        void CusomizeChart(LightningChartUltimate chart)
+        #region Hidden polishing
+        void CustomizeChart(LightningChartUltimate chart)
         {
             chart.Background.Color = Color.FromArgb(255, 30, 30, 30);
             chart.Background.GradientFill = GradientFill.Solid;
@@ -105,5 +118,6 @@ namespace MultipleSeries_WF
                 xAxis.ValueType = AxisValueType.Number;
             }
         }
+        #endregion
     }
 }

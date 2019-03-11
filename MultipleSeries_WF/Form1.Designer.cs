@@ -36,7 +36,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(509, 311);
             this.Name = "Form1";
-            this.Text = "LightningChart tutorial 02 - Multiple Series Chart";
+            this.Text = "LightningChart Tutorial - Multiple Series";
             this.ResumeLayout(false);
 
         }
