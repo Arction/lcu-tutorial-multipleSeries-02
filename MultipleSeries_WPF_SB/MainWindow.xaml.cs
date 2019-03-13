@@ -1,5 +1,5 @@
 ﻿// ------------------------------------------------------------------------------------------------------
-// LightningChart® example code: Chart with Multiple Series Demo.
+// LightningChart® example code: 2D Chart with Multiple PointLineSeries Demo.
 //
 // If you need any assistance, or notice error in this example code, please contact support@arction.com. 
 //
@@ -25,9 +25,6 @@ namespace MultipleSeries_WPF_SB
             // Create chart.
             // This is done using XAML.
             InitializeComponent();
-
-            // Create chart.
-            // This is done using XAML.
 
             // Disable rendering before updating chart properties to improve performance
             // and to prevent unnecessary chart redrawing while changing multiple properties.
@@ -58,7 +55,7 @@ namespace MultipleSeries_WPF_SB
                 data[i].Y = Math.Sin(i * 0.2) * 50 + 50;
             }
 
-            // 2. Create an other PointLineSeries and set new color and line-pattern for it.
+            // 2. Create another PointLineSeries and set new color and line-pattern for it.
             // This is done using XAML.
 
             // 3. Set data-points into series.

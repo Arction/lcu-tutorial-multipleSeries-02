@@ -1,5 +1,5 @@
 ﻿// ------------------------------------------------------------------------------------------------------
-// LightningChart® example code: Chart with Multiple Series Demo.
+// LightningChart® example code: 2D Chart with Multiple PointLineSeries Demo.
 //
 // If you need any assistance, or notice error in this example code, please contact support@arction.com. 
 //
