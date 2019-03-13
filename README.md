@@ -1,4 +1,4 @@
-# Multiple Series
+# 2D Chart with Multiple PointLineSeries
 
 Best practice of data visualization within Data Analysis in different fields and industries is combining multiple series in one chart to examine and get richer insight about collected data. Moreover, it allows researchers to make conclusions about the researching phenomena out of each data set, to search patterns and relationships both within a collection and across collections. Modify the code from the previous tutorial [Simple 2D Chart](https://www.arction.com/tutorials/#/lcu_tutorial_simple2Dchart_01) and create one additional line.
 
